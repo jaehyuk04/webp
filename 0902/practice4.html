@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Elvis Presley</title>
+<style>
+    body { background-color: rgb(230, 220, 200); }
+    h3 { text-align: center; }
+    hr { height: 10px; border: solid grey; background-color: grey; }
+    span { color: violet; cursor: pointer; }
+    #myPhoto { display: none; }
+</style>
+<script>
+    function show() {
+        document.getElementById("myPhoto").style.display = "block";
+    }
+    function hide() {
+        document.getElementById("myPhoto").style.display = "none";
+    }
+</script>
+</head>
+<body>
+<h3>Elvis Presley</h3>
+<hr>
+<img id="myPhoto" src="my_face.png" width="200">
+<p>
+He was an American singer and actor. In November 1956, 
+he made his film debut in 
+<span onmouseover="show()" onmouseout="hide()">Love Me Tender</span>. 
+He is often referred to as "the King of Rock and Roll".
+</p>
+</body>
+</html>
