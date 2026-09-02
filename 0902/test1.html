@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나의 소개</title>
     <style>
         body { background-color: rgb(156, 48, 156); color: black;
@@ -10,9 +9,9 @@
         h3 { text-align: center; color: purple;}
         hr { height : 5px; border : solid grey; background-color: grey;}
         span { color: red; font-size: 20px;}
-         #fig { display: none; } 
+        #fig { display: none; } 
     </style>
-   <script>
+    <script>
         function show() {
             document.getElementById("fig").style.display = "block";
         }
@@ -24,7 +23,8 @@
 <body>
     <h3 onmouseover="show()" onmouseout="hide()">안제혁</h3>
     <hr>
-    <img id="myPhoto" src="my_face.png" width="200">
+    <img id="fig" src="my_face.png" width="150" height="200"
+    alt="안제혁">
     저는 대한민국에서 태어나서 소프트웨어를 전공하는 학생입니다. 
     제가 제일 좋아하는 과목은 <span>웹 프로그래밍</span>이고, 
     그 중에서도 <span>자바스크랩트</span>을 제일 잘합니다.
