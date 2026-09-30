@@ -1,0 +1,71 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+}
+
+body {
+    background-color: aliceblue;
+    font-family: "휴먼편지체", sans-serif;
+}
+
+h1 {
+    color: brown;
+    text-align: center;
+    font-family: sans-serif;
+    margin: 0;
+    padding-top: 5px;
+}
+
+header {
+    height: 20%;
+    background-color: yellow;
+    box-sizing: border-box;
+    padding: 0 5px;
+    overflow: auto;
+    font-family: sans-serif;
+}
+
+section {
+    height: 72%;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow: auto;
+}
+
+fieldset {
+    background-color: lightpink;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 0;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+.title {
+    display: inline-block;
+    width: 110px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+textarea {
+    vertical-align: top;
+    width: 80%;
+    font-family: "휴먼편지체", sans-serif;
+}
+
+footer {
+    height: 8%;
+    background-color: mediumpurple;
+    box-sizing: border-box;
+    padding: 5px 12px;
+    overflow: hidden;
+}
+
+footer p {
+    font-family: sans-serif;
+    margin: 2px 0;
+}

@@ -1,0 +1,90 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: aliceblue;
+}
+
+h1 {
+    color: brown;
+    text-align: center;
+    margin: 0;
+    padding-top: 5px;
+}
+
+header {
+    height: 25%;
+    min-height: 180px;
+    background-color: yellow;
+    box-sizing: border-box;
+    padding: 0 5px;
+    overflow: auto;
+}
+
+audio {
+    display: block;
+    margin: 5px 0;
+}
+
+nav {
+    float: left;
+    width: 20%;
+    height: 72%;
+    background-color: darkorange;
+    box-sizing: border-box;
+    padding: 0 10px;
+    overflow: auto;
+}
+
+section {
+    float: left;
+    width: 80%;
+    height: 72%;
+    background-color: lightblue;
+    box-sizing: border-box;
+    padding: 0 10px;
+    overflow: auto;
+}
+
+footer {
+    clear: both;
+    height: 8%;
+    background-color: mediumpurple;
+    box-sizing: border-box;
+    padding: 5px 12px;
+    overflow: hidden;
+}
+
+footer p {
+    margin: 2px 0;
+    text-indent: 0;
+}
+
+ul {
+    padding-left: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-family: "휴먼편지체", sans-serif;
+    font-size: 1em;
+    text-indent: 1em;
+}
+
+h2 {
+    color: blue;
+    text-shadow: 2px 2px 3px gray;
+}
+
+#sample p {
+    font-family: sans-serif;
+    text-indent: 0;
+    margin-left: 100px;
+}
