@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방문 시작이 오전 오후 배경</title>
+</head>
+<body>
+    <script>
+        let day = new Date();
+        if(day.getHours() < 12){
+            document.body.style.backgroundColor = "lightskyblue";
+            document.write("<h3>오전이면 lightskyblue, 오후이면 orange 배경</h3>")
+        }
+        else{
+            document.body.style.backgroundColor = "orange";
+            document.write("<h3>오전이면 lightskyblue, 오후이면 orange 배경</h3>")
+        }
+        document.write("현재 시간 : " + day.getHours() + "시," + 
+            day.getMinutes() + "분," + day.getSeconds() + "초"
+        );
+    </script>
+    
+</body>
+</html>
