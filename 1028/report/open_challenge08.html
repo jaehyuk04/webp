@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>갬블링 게임</title>
+    <style>
+        #game span {
+            display: inline-block;
+            width: 50px;
+            font-size: 40px;
+            font-weight: bold;
+            font-style: italic;
+            color: navy;
+            background-color: #eee0cc;
+            text-align: center;
+        }
+
+        #result {
+            font-style: italic;
+            color: violet;
+        }
+    </style>
+    <script>
+        let count = 0;
+
+        function change(obj) {
+            obj.innerHTML = Math.floor(Math.random() * 3);   // 0~2 랜덤 값
+            count++;
+
+            if (count == 3) {                                 // 3번 클릭하면 검사
+                let n = document.getElementsByClassName("num");
+                let result = document.getElementById("result");
+
+                if (n[0].innerHTML == n[1].innerHTML && n[1].innerHTML == n[2].innerHTML)
+                    result.innerHTML = "Success(click here to do again)";
+                else
+                    result.innerHTML = "fail(click here to do again)";
+            }
+        }
+
+        function restart() {
+            let n = document.getElementsByClassName("num");
+            for (let i = 0; i < n.length; i++)
+                n[i].innerHTML = "0";
+            document.getElementById("result").innerHTML = "";
+            count = 0;
+        }
+    </script>
+</head>
+
+<body>
+    <h3>갬블링 게임</h3>
+    <p>각 숫자를 클릭하면 0에서 2사이의 난수로 바뀝니다.<br>모두 같은 수가 나오면 승리합니다.</p>
+    <hr>
+    <div id="game">
+        <span class="num" onclick="change(this)">0</span>
+        <span class="num" onclick="change(this)">0</span>
+        <span class="num" onclick="change(this)">0</span>
+    </div>
+    <div id="result" onclick="restart()"></div>
+</body>
+
+</html>
