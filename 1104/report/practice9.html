@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>onmouseover와 onmouseout</title>
+<script>
+arr = ["빨간자전거를 타고 서울, 대전, 대구, 부산 찍고, 목포, 인천을 거쳐 달린다",
+"최대한 빠른 시기에 책 100권 다 읽기",
+"아침엔 마라톤, 점심엔 수영, 저녁엔 자전거로 훈련하기",
+"김주현 교수님만 따라가면됨"];
+
+function setup() {
+    div = document.getElementById("div");
+
+    list = document.getElementsByTagName("li");
+    for (let i = 0; i < list.length; i++) {
+        list[i].addEventListener("mouseover", showTip);
+        list[i].addEventListener("mouseout", hideTip);
+    }
+}
+
+function showTip(event) {
+    let num = 0;
+    switch (event.target.id) {
+        case "l0": num = 0; break;
+        case "l1": num = 1; break;
+        case "l2": num = 2; break;
+        case "l3": num = 3; break;
+    }
+    fillTip(arr[num], event);
+}
+
+function fillTip(message, event) {
+    div.innerHTML = message;
+    div.style.left = event.clientX + "px";
+    div.style.top = event.clientY + "px";
+    div.style.border = "1px solid yellowgreen";
+    div.style.background = "aliceblue";
+    div.style.visibility = "visible";
+    div.style.width = "200px";
+    div.style.height = "80px";
+}
+
+function hideTip() {
+    div.style.visibility = "hidden";
+}
+</script>
+</head>
+<body onload="setup()">
+<h3>아이템에 마우스를 올리면 설명 출력</h3>
+<hr>
+<p>여름 방학 때 하고 싶은 것들</p>
+<ul>
+<li id="l0">자전거로 대한민국 일주</li>
+<li id="l1">책 100권 읽기</li>
+<li id="l2">철인 3종 경기 준비</li>
+<li id="l3">자바스크립트 정복</li>
+</ul>
+<div id="div" style="position:absolute"></div>
+</body>
+</html>
