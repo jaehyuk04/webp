@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>11월 25일 저녁 신청 받기</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family:
+        Arial,
+        "Malgun Gothic",
+        sans-serif;
+
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 450px;
+
+      padding: 35px;
+
+      background-color: white;
+
+      border-radius: 15px;
+
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 30px;
+
+      text-align: center;
+
+      font-size: 26px;
+
+      color: #222;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-weight: bold;
+
+      color: #333;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+
+      padding: 12px;
+
+      border: 1px solid #ccc;
+
+      border-radius: 8px;
+
+      font-size: 15px;
+
+      font-family:
+        Arial,
+        "Malgun Gothic",
+        sans-serif;
+
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #222;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 8px;
+
+      background-color: #222;
+
+      color: white;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #444;
+    }
+
+    button:disabled {
+      background-color: #999;
+
+      cursor: not-allowed;
+    }
+
+    #complete {
+      display: none;
+
+      text-align: center;
+    }
+
+    #complete h2 {
+      margin: 0;
+
+      font-size: 28px;
+
+      color: #222;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- 입력 화면 -->
+  <div class="container" id="formContainer">
+
+    <h1>
+      11월 25일 저녁 신청 받기
+    </h1>
+
+
+    <form id="requestForm">
+
+
+      <!-- 이름 -->
+      <div class="form-group">
+
+        <label for="name">
+          이름
+        </label>
+
+        <input
+          type="text"
+          id="name"
+          placeholder="이름을 입력하세요"
+          required
+        >
+
+      </div>
+
+
+      <!-- 음식 -->
+      <div class="form-group">
+
+        <label for="food">
+          음식
+        </label>
+
+        <input
+          type="text"
+          id="food"
+          placeholder="먹고 싶은 음식을 입력하세요"
+          required
+        >
+
+      </div>
+
+
+      <!-- 하고 싶은 말 -->
+      <div class="form-group">
+
+        <label for="message">
+          하고 싶은 말
+        </label>
+
+        <textarea
+          id="message"
+          placeholder="하고 싶은 말을 입력하세요"
+        ></textarea>
+
+      </div>
+
+
+      <!-- 확인 버튼 -->
+      <button
+        type="submit"
+        id="submitButton">
+
+        확인
+
+      </button>
+
+
+    </form>
+
+  </div>
+
+
+  <!-- 완료 화면 -->
+  <div class="container" id="complete">
+
+    <h2>
+      답장 감사합니다.
+    </h2>
+
+  </div>
+
+
+  <script>
+
+    // 폼 가져오기
+    const form =
+      document.getElementById("requestForm");
+
+
+    // 확인 버튼 가져오기
+    const submitButton =
+      document.getElementById("submitButton");
+
+
+    // 폼 제출
+    form.addEventListener(
+      "submit",
+      function(event) {
+
+        // 기본 폼 제출 방지
+        event.preventDefault();
+
+
+        // 입력값 가져오기
+        const name =
+          document.getElementById("name").value;
+
+        const food =
+          document.getElementById("food").value;
+
+        const message =
+          document.getElementById("message").value;
+
+
+        // 버튼 비활성화
+        submitButton.disabled = true;
+
+        submitButton.textContent = "저장 중...";
+
+
+        // Code.gs의 saveData() 실행
+        google.script.run
+
+          // 저장 성공
+          .withSuccessHandler(
+            function(result) {
+
+              // 입력 화면 숨기기
+              document.getElementById(
+                "formContainer"
+              ).style.display = "none";
+
+
+              // 완료 화면 표시
+              document.getElementById(
+                "complete"
+              ).style.display = "block";
+
+
+              // Code.gs에서 받은 메시지 출력
+              document.querySelector(
+                "#complete h2"
+              ).textContent = result;
+
+            }
+          )
+
+
+          // 저장 실패
+          .withFailureHandler(
+            function(error) {
+
+              alert(
+                "저장 중 오류가 발생했습니다.\n" +
+                error.message
+              );
+
+
+              // 다시 버튼 활성화
+              submitButton.disabled = false;
+
+              submitButton.textContent = "확인";
+
+            }
+          )
+
+
+          // Code.gs 함수 실행
+          .saveData(
+            name,
+            food,
+            message
+          );
+
+    });
+
+
+  </script>
+
+
+</body>
+
+</html>
